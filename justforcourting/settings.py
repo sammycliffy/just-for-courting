@@ -25,7 +25,7 @@ SECRET_KEY = '1qwn(!t^($6b4h@7+@m38l=f5ndw*l=z76+3n*b8s0opm7i%5q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['courting.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -54,13 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'justforcourting.urls'
 
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
 
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 TEMPLATES = [
     {
@@ -73,8 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',  # <--
-                'social_django.context_processors.login_redirect', # <--
+                
             ],
         },
     },
