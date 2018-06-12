@@ -1,0 +1,167 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'app/assets/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'app/assets/css/profile.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Profile</title>
+    <style>
+            .dot {
+                height: 12px;
+                width: 12px;
+                background-color: lightseagreen;
+                border-radius: 50%;
+                display: inline-block;
+            }
+    </style>
+</head>
+<body>
+   <header>
+       <nav class="navbar">
+           <div class="container">
+               <a href="" class="navbar-brand">Justforcourting</a>
+               <ul class="nav navbar-nav">
+                   <li><a href="">Messages</a></li>
+                   <li><a href="">Admirers</a></li>
+                   <li><a href="">Interest</a></li>
+                   <li><a href="">search</a></li>
+
+               </ul>
+           </div>
+       </nav>
+       <nav class="issues">
+            <h4>Having relationship problems? <a href="" class="btn btn-sm btn-success">Get Advice now!</a></h4>
+       </nav>
+   </header>
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-3">
+                <div class="jumbotron">
+                    <span>Hi Username,{{user.gender}} </span><br>
+                    <img src="{% static 'app/assets/images/img_bg_8.jpg' %}" alt="profilepicture" class="img-circle">
+                </div>
+                <div class="notification">
+                    <h4>Notification</h4>
+                    <table class="table">
+                        <tr>
+                            <td><span> <a href="" title="like"><i class="fa fa-envelope" style="color:hotpink"></i></a></span></td><td> 0 New Messages</td>
+                        </tr>
+                        <tr>
+                                <td><span> <a href="" title="like"><i class="fa fa-envelope" style="color:hotpink"></i></a></span></td><td> 0 Interests</td>
+                        </tr>
+                        <tr>
+                                <td><span> <a href="" title="like"><i class="fa fa-envelope" style="color:hotpink"></i></a></span></td><td> 0 Profile Views</td>
+                        </tr>
+                     </table>
+
+                </div>
+           </div>
+           <div class="myinterest">
+               <h4>My Interests</h4>
+                <div class="col-lg-2">
+                        <div class="jumbotron">
+                            <center>
+                                    <img src="{% static 'app/assets/images/1.jpeg'%}" class="img-circle" alt="">
+                            </center>
+                             <hr>
+                             <span class="dot"></span> <span class="name">Aisha</span><br>
+                             
+                             <center>
+                                    <i>Humble and God Fearing</i><br><br>
+                                 <span style="font-size:10px;">23 years old from <b>Nigeria</b></span><br>
+                                 <span style="font-size:10px; font-family:arial">Last seen <b style="color:green;">3 Minutes ago</b></span>
+                             </center>
+                             <div class="bottom">
+                                     <span> <a href="" title="like"><i class="fa fa-heart" style="color:hotpink"></i></a></span>
+                                     <span><a href="" title="message"><i class="fa fa-envelope"  style="color:hotpink"></i></a></span>
+                                     <span><a href="" title="interest"><i class="fa fa-thumbs-up"  style="color:hotpink"></i></a></span>
+                                </div>
+                            </div> 
+                    </div>
+                    <div class="col-lg-2">
+                            <div class="jumbotron">
+                                <center>
+                                        <img src="{% static 'app/assets/images/1.jpeg'%}" class="img-circle" alt="">
+                                </center>
+                                 <hr>
+                                 <span class="dot"></span> <span class="name">Aisha</span><br>
+                                 
+                                 <center>
+                                        <i>Humble and God Fearing</i><br><br>
+                                     <span style="font-size:10px;">23 years old from <b>Nigeria</b></span><br>
+                                     <span style="font-size:10px; font-family:arial">Last seen <b style="color:green;">3 Minutes ago</b></span>
+                                 </center>
+                                 <div class="bottom">
+                                        
+                                         <span> <a href="" title="like"><i class="fa fa-heart" style="color:hotpink"></i></a></span>
+                                         <span><a href="" title="message"><i class="fa fa-envelope"  style="color:hotpink"></i></a></span>
+                                         <span><a href="" title="interest"><i class="fa fa-thumbs-up"  style="color:hotpink"></i></a></span>
+                                         
+                                                                       </div>
+                                </div>
+                                
+                        </div>
+                        <div class="col-lg-2">
+                                <div class="jumbotron">
+                                    <center>
+                                            <img src="{% static 'app/assets/images/1.jpeg'%}" class="img-circle" alt="">
+                                    </center>
+                                     <hr>
+                                     <span class="dot"></span> <span class="name">Aisha</span><br>
+                                     
+                                     <center>
+                                            <i>Humble and God Fearing</i><br><br>
+                                         <span style="font-size:10px;">23 years old from <b>Nigeria</b></span><br>
+                                         <span style="font-size:10px; font-family:arial">Last seen <b style="color:green;">3 Minutes ago</b></span>
+                                     </center>
+                                     <div class="bottom">
+                                            
+                                             <span> <a href="" title="like"><i class="fa fa-heart" style="color:hotpink"></i></a></span>
+                                             <span><a href="" title="message"><i class="fa fa-envelope"  style="color:hotpink"></i></a></span>
+                                             <span><a href="" title="interest"><i class="fa fa-thumbs-up"  style="color:hotpink"></i></a></span>
+                                             
+                                                                           </div>
+                                    </div>
+                                    
+                            </div>
+                            <div class="col-lg-2">
+                                    <div class="jumbotron">
+                                        <center>
+                                                <img src="{% static 'app/assets/images/1.jpeg'%}" class="img-circle" alt="">
+                                        </center>
+                                         <hr>
+                                         <span class="dot"></span> <span class="name">Aisha</span><br>
+                                         
+                                         <center>
+                                                <i>Humble and God Fearing</i><br><br>
+                                             <span style="font-size:10px;">23 years old from <b>Nigeria</b></span><br>
+                                             <span style="font-size:10px; font-family:arial">Last seen <b style="color:green;">3 Minutes ago</b></span>
+                                         </center>
+                                         <div class="bottom">
+                                                
+                                                 <span> <a href="" title="like"><i class="fa fa-heart" style="color:hotpink"></i></a></span>
+                                                 <span><a href="" title="message"><i class="fa fa-envelope"  style="color:hotpink"></i></a></span>
+                                                 <span><a href="" title="interest"><i class="fa fa-thumbs-up"  style="color:hotpink"></i></a></span>
+                                                 
+                                                                               </div>
+                                        </div>
+                                        
+                                </div>
+                    <div class="col-lg-1">
+                            <div class="jumbotron" style="height:800px">
+                                <p>jane</p>
+                            </div>
+                    </div>
+            </div>
+          
+       
+      
+        
+    </div>
+</body>
+</html>
