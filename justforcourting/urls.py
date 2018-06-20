@@ -23,8 +23,8 @@ from app.views import SignupFormView, user_profile
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    #url(r'^oauth/', include('social_django.urls', namespace='social')),  #
-    path('registration/', SignupFormView.as_view()),
+    #url(r'^oauth/', include('social_django.urls', namespace='social')),  
+    path('registration/', SignupFormView.as_view(),name="registration" ),
     #path('profile/',ProfileView.as_view())
     url('profile/',user_profile.as_view())
 ]

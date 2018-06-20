@@ -1,8 +1,15 @@
 {% extends 'app/base.html'%}
 {% block content %}
+{% load staticfiles %}
+<script src="{% static 'app/assets/js/countries.js' %}"></script>
+<script src="{% static 'app/assets/js/jquery.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'app/assets/css/registration.css' %}">
 <style>
   body{
-    background-color:rgb(235, 227, 227);
+    background-image:url("{% static 'app/assets/images/couple-789824__340.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
   }
   .center-div{
     width:100%;
@@ -10,45 +17,133 @@
     padding:20px 40px 40px 40px;
     
   }
+  .btn-success{
+    border-radius: 1px;
+    background-color:rgb(194, 41, 118);
+    border:none;
+    width:100%;
+  }
+  .btn-success input:hover{
+    background-color:blue;
+  }
   .heading{
-    background-color:darkslateblue;
+    background-color:hotpink;
     color:white;
     width: 100%;
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
-    padding-bottom: 15px;
-    padding-top:15px;
+    padding-bottom: 8px;
+    padding-top:8px;
     font-weight: bold;
     border-top-right-radius: 5px;
     border-top-left-radius:5px;
+  }
+  label{
+    font-size:13px;
+  }
+  .form-control{
+    
+    font-size:13px;
+    padding-bottom:5px;
+  }
+  .show_error{
+    border: 2px solid red;
   }
 </style>
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-4"></div>
+    <div class="col-lg-3"></div>
     <div class="col-lg-5">
       <div class="heading"><span>Registration</span></div>
       <div class="center-div">
-        <form method="post">
-            <input type='hidden' name='csrfmiddlewaretoken' value='eznrXNaMlBa19rg0UzlcNkckNdw6hOz5ptRZOjoA3PPbJwzJ7MdqKGi1tvh95M2S' />
-            <label for="id_username">Username:</label> <input type="text" name="username" maxlength="255" autofocus required id="id_username" class="form-control"/>
-            <label for="id_email">Email:</label> <input type="email" name="email" maxlength="254" required id="id_email" class="form-control"/>
-            <label for="id_password1">Password:</label> <input type="password" name="password1" required id="id_password1" class="form-control"/>
-            <label for="id_password2">Confirm Password:</label> <input type="password" name="password2" required id="id_password2" class="form-control"/>
-            <label for="id_gender">Gender:</label> <select name="gender" id="id_gender" class="form-control">
+          <label for="error" id="error" style="color:red"></label>
+        <form method="post" id="registration_form">
+            {% csrf_token %}
+            <label for="id_username">Username:</label> <input type="text"  maxlength="255" autofocus required id="username" class="form-control"/>
+            <label for="id_email">Email:</label> <input type="email" name="email" maxlength="254" required id="email" class="form-control"/>
+            <label for="id_password1">Password:</label> <input type="password" name="password1" required id="password" class="form-control"/>
+            <div class="col-lg-6">
+              <label for="id_gender">Gender:</label> <select name="gender" id="gender" class="form-control">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label for="id_gender">Age:</label> <select name="gender" id="age" class="form-control">
+                <script>
+                   for(var x = 18; x<=99; x++){
+                     document.write('<option>'+x+'</option>')
+                   }
+                </script>
+              </select>
+            </div>
+            <label for="id_country">Country:</label> <select name="country" id="country" class="form-control">
             </select>
-            <label for="id_country">Country:</label> <select name="country" id="id_country" class="form-control">
-            </select>
-            <center  id="registration_submit"><button  type="submit" class="btn  btn-block"  style="border-radius: 3px; background-color:hotpink; color:white; border:none; padding:10px 60px 10px 60px; cursor:pointer; font-weight:bold;">START COURTING NOW </button>
+            <label for="id_country">state:</label> <select name="country" id="state" class="form-control">
+            </select><br>
+           
+            <center  id="registration_submit"><button  type="submit" class="btn btn-success">START COURTING NOW </button>
                 <input type="checkbox" style="background-color:white; padding-right:20px;" checked> <span>Yes, I have agreed to the terms and conditions</span> 
             </center>
           </form>
 
-  
+          <script language="javascript">
+            populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+            populateCountries("country2");
+            populateCountries("country2");
+          </script>
+          
       </div>
     </div>
   </div>
 </div>
+<script>
+  $(document).on('submit', '#registration_form', function (e) {
+		e.preventDefault();
+		$("#loading").css('display', 'block');
+		$("#recommend_error").css('display:none');
+		$.ajax({
+			type: 'POST',
+			url: '/registration/',
+			beforeSend: function () {
+				$("#loading").css('display', 'block');
+				$("#recommend_error").hide();
+			},
+			data: {
+				username:$('#username').val(),
+				password:$('#password').val(),
+				email:$('#email').val(),
+				gender:$('#username').val(),
+				country:$('#country').val(),
+				state:$('#state').val(),
+				csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+			},
+			success: function (data) {
+							if(data.username_taken){
+                document.getElementById('error').innerHTML = data.error_message;
+                $('#username').addClass('show_error');
+							}else if (data.email_taken){
+								document.getElementById('error').innerHTML = data.error_message;
+                $('#email').addClass('show_error');
+							}else if (data.empty_country){
+                document.getElementById('error').innerHTML = data.error_message;
+                $('#country').addClass('show_error');
+							}else if (data.empty_state){
+                document.getElementById('error').innerHTML = data.error_message;
+                $('#state').addClass('show_error');
+							}
+							else {
+								alert('saved successfully')
+								window.location.href = /profile/
+								
+							}
+						},
+						error: function (xhr, errmsg) {
+							$('#error').html("<div class='alert-box alert radius' data-alert> Opps! We have encountered and error: </div>");
+						}
+		});
+	});
+</script>
 <br><br><br>
   {% endblock %}

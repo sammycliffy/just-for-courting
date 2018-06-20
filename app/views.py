@@ -24,13 +24,43 @@ class SignupFormView(View):
         return render(request, 'app/registration.html',{'form':form})
 
     def post(self, request):
-        form = Signup = (request.POST)
-        if form.is_valid():
-            user = form.save()
-            return HttpResponse('saved successfully')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        gender = request.POST.get('gender')
+        country = request.POST.get('country')
+        state = request.POST.get('state')
+        age = request.POST.get('age')
+        data = {
+            'username_taken': User.objects.filter(username__iexact=username).exists(),
+            'email_taken': User.objects.filter(email__iexact =email).exists(),
+            'empty_country': country == '-1',
+            'empty_state': state == '-1',
+            
+        }
+        if data['username_taken']:
+            data['error_message'] = "Sorry Nick Name already taken"
+            return JsonResponse(data)
+        if data['email_taken']:
+            data['error_message'] = " Sorry Email already taken"
+            return JsonResponse(data)
+        if data['empty_country']:
+            data['error_message'] = " You must select a country"
+            return JsonResponse(data)
+        if data['empty_state']:
+            data['error_message'] = " You must select a state"
+            return JsonResponse(data)
         else:
-            form = Signup()
-        return render(request, 'app/registration.html', {'form':form})
+            user = User.objects.create_user(username=username, password=password, email=email)
+            profile = Profile.objects.create(
+                user = user,
+                country = country,
+                state = state,
+                gender = gender,
+                age = age
+            )
+            profile.save()
+        return render(request, 'app/registration.html')
 
 
 
