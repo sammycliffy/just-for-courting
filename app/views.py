@@ -8,6 +8,9 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.utils.decorators import method_decorator
 from .forms import Signup
+from django.contrib.auth.hashers import make_password, check_password
+from django.utils import timezone
+from django.views.generic.list import ListView
 
 # Create your views here.
 def index(request):
@@ -16,6 +19,11 @@ def index(request):
 @login_required
 def home(request):
     return render(request, 'core/home.html')
+
+
+def chat(request):
+    return render(request, 'app/chat.html')
+
 
 class SignupFormView(View):
     
@@ -63,6 +71,16 @@ class SignupFormView(View):
         return render(request, 'app/registration.html')
 
 
+#class Advice_list_view(ListView):
+
+    #model = Advice
+ #   paginate_by = 100  # if pagination is desired
+ #   template_name = 'app/advice.html'
+
+    #def get_context_data(self, **kwargs):
+        #context = super().get_context_data(**kwargs)
+        #context['now'] = timezone.now()
+        #return context
 
 class user_profile(DetailView):
     model = User
@@ -70,4 +88,10 @@ class user_profile(DetailView):
 
     def get_object(self):
         return get_object_or_404(User, username=self.request.user)
-        
+
+def advice(request):
+    return render(request, 'app/advice.html')
+
+
+def complaint(request):
+    return render(request, 'app/complaint.html')

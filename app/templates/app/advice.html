@@ -1,0 +1,100 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'app/assets/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'app/assets/css/profile.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <title>Profile</title>
+    <style>
+            .dot {
+                height: 12px;
+                width: 12px;
+                background-color: lightseagreen;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .jumbotron{
+                padding-top:10px;
+             
+            }
+            .chatbox{
+                width:100%;
+                height:80px;
+                background-color:white;
+                cursor:-webkit-grab;
+                padding: 10px 10px 10px 10px;
+                
+            }
+            .float{
+                float:left;
+                padding-right:10px;
+            }
+            .chatview{
+                width:100%;
+                height:100%;
+                border: 1px solid pink;
+            }
+            .chatbox:hover{
+                width:100%;
+                height:80px;
+                background-color:rgb(236, 224, 238);
+                cursor:-webkit-grab;
+                padding: 10px 10px 10px 10px;
+                
+            }
+            h3{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            img{
+                height:300px;
+                width:100%;
+            }
+            .col-lg-12{
+                padding-bottom:40px;
+            }
+            
+    </style>
+</head>
+<body>
+   <header>
+       <nav class="navbar">
+           <div class="container">
+               <a href="" class="navbar-brand">Justforcourting</a>
+               <ul class="nav navbar-nav">
+                   <li><a href="">Messages</a></li>
+                   <li><a href="">Admirers</a></li>
+                   <li><a href="">Interest</a></li>
+                   <li><a href="">search</a></li>
+
+               </ul>
+           </div>
+       </nav>
+       <nav class="issues">
+            <h4>Having relationship problems? <a href="" class="btn btn-sm btn-success">Get Advice now!</a></h4>
+       </nav>
+       <br>
+   </header>
+   <body>
+       <div class="container">
+           <div class="row">
+                <div class="col-1g-12">
+                    <div class="col-lg-6">
+                        <h3 style="font-family:'Trebuchet MS'">Dear Realtionship stop saying you miss</h3>
+                        <p> <strong>You may have forgotten that single</strong></p>
+                        <p>By Carter</p>
+                        <a href="" class="btn btn-info">Read more</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <br>
+                        <img src="{% static 'app/assets/images/couple-789824__340.jpg' %}" alt="">
+                    </div>
+                </div>
+           </div>
+           <hr>
+       </div>
+       
+   </body>

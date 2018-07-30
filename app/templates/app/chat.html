@@ -1,0 +1,123 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'app/assets/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'app/assets/css/profile.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <title>Profile</title>
+    <style>
+            .dot {
+                height: 12px;
+                width: 12px;
+                background-color: lightseagreen;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .jumbotron{
+                padding-top:10px;
+             
+            }
+            .chatbox{
+                width:100%;
+                height:80px;
+                background-color:white;
+                cursor:-webkit-grab;
+                padding: 10px 10px 10px 10px;
+                
+            }
+            .float{
+                float:left;
+                padding-right:10px;
+            }
+            .chatview{
+                width:100%;
+                height:100%;
+                border: 1px solid pink;
+            }
+            .chatbox:hover{
+                width:100%;
+                height:80px;
+                background-color:rgb(236, 224, 238);
+                cursor:-webkit-grab;
+                padding: 10px 10px 10px 10px;
+                
+            }
+            
+    </style>
+</head>
+<body>
+   <header>
+       <nav class="navbar">
+           <div class="container">
+               <a href="" class="navbar-brand">Justforcourting</a>
+               <ul class="nav navbar-nav">
+                   <li><a href="">Messages</a></li>
+                   <li><a href="">Admirers</a></li>
+                   <li><a href="">Interest</a></li>
+                   <li><a href="">search</a></li>
+
+               </ul>
+           </div>
+       </nav>
+       <nav class="issues">
+            <h4>Having relationship problems? <a href="" class="btn btn-sm btn-success">Get Advice now!</a></h4>
+       </nav>
+   </header>
+   <div class="container-fluid">
+       <div class="row">
+           <div class="col-lg-4">
+               <div class="jumbotron">
+                   <h3>Previous Chat</h3>
+                   <input type="text" class="form-control" placeholder="Search chat...">
+                   <br><br>
+                   <div class="chatbox">
+                       <div class="float">
+                            <img src="{% static 'app/assets/images/default.png'%}"  style = "width:50px; height:50px;"alt=""> <br><span class="dot"></span>
+                       </div>
+                       <div class="float">
+                           <h4>Name</h4>
+                           <span>Message</span>
+                       </div>
+                   </div><br><br>
+                   <div class="chatbox">
+                        <div class="float">
+                             <img src="{% static 'app/assets/images/default1.png'%}"  style = "width:50px; height:50px;"alt=""> <br><span class="dot"></span>
+                        </div>
+                        <div class="float">
+                            <h4>Name</h4>
+                            <span>Message</span>
+                        </div>
+                </div>
+               </div>
+           </div>
+           <div class="col-lg-8">
+               <div class="chatview">
+                <div class="chatbox">
+                    <div class="float">
+                         <img src="{% static 'app/assets/images/default.png'%}"  style = "width:50px; height:50px;"alt=""> <br><span class="dot"></span>
+                    </div>
+                    <div class="float">
+                        <h4>Name</h4>
+                        <span>Message</span>
+                        <br><br>
+                        <h5 style="color:rgb(131, 107, 105)">Send your message to User let him/her know that you care</h5>
+                    </div>
+                </div><br><br>
+               </div>
+               <br><br>
+               <div class="form-group has-warning has-feedback">
+              
+                <input type="text" class="form-control" id="inputWarning2" placeholder="Type your message">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+              </div>
+                <center><input type="submit" value="send" class="btn btn-success"></center>
+                  
+           </div>
+
+       </div>
+
+   </div>

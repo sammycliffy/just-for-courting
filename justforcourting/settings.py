@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['courting.herokuapp.com', 'localhost']
 
 INSTALLED_APPS = [
     'app',
+    'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'profile'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
