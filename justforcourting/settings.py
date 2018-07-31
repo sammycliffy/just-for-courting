@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['courting.herokuapp.com', 'localhost']
 
 INSTALLED_APPS = [
     'app',
-    'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
